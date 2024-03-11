@@ -129,8 +129,36 @@ for ciudad_idx, ciudad in enumerate(temperaturas):
         promedio = suma_temperaturas / len(semana)
         print(f"Promedio de temperaturas en {ciudades[ciudad_idx]}, Semana {semana_idx + 1}: {promedio:.2f} grados")
 print("gracias por visualizar mi programa")
-def calcular_promedio (suma_acumulada, num_elementos):
-    promedio = suma_acumulada / num_elementos
-    return promedioa = 184 #Suma acumuladab = 7
-    # #Número de elementospromedio_temperaturas = round(calcular_promedio(a, b), 2)
-    # print(promedio_temperaturas)
+def temperatura_promedio(ciudades_temperaturas):
+    """
+    Esta función calcula la temperatura promedio de un conjunto de ciudades.
+    Args:
+        ciudades_temperaturas (dict): Un diccionario que contiene nombres de ciudades como claves
+                                      y listas de temperaturas como valores.
+    Returns:
+        dict: Un diccionario que contiene nombres de ciudades como claves
+              y temperaturas promedio como valores.
+    """
+    temperaturas_promedio = {}
+
+    for ciudad, temperaturas in ciudades_temperaturas.items():
+        promedio = sum(temperaturas) / len(temperaturas)
+        temperaturas_promedio[ciudad] = promedio
+
+    return temperaturas_promedio
+
+
+# Creamos un diccionario de ciudades y temperaturas
+ciudades_temperaturas = {
+    "Sucumbios": [suma_temperaturas / 6, suma_temperaturas / 8],
+    "Quito": [suma_temperaturas / 28 + suma_temperaturas/ 12],
+    "Manabi": [suma_temperaturas / 9 + suma_temperaturas/ 9],
+}
+
+# Llamamos a la función para calcular las temperaturas promedio
+temperaturas_promedio = temperatura_promedio(ciudades_temperaturas)
+
+# Mostramos los resultados
+print("Temperaturas Promedio por Ciudad:")
+for ciudad, promedio in temperaturas_promedio.items():
+    print(f"{ciudad}: {promedio:.2f}°C")
